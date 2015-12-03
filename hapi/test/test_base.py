@@ -1,7 +1,7 @@
 from collections import defaultdict
 import unittest
 import simplejson as json
-from io import StringIO
+from io import BytesIO
 from gzip import GzipFile
 
 from hapi.base import BaseClient
@@ -63,7 +63,7 @@ class BaseTest(unittest.TestCase):
             if counter['count'] < 2:
                 raise HapiError(defaultdict(str), defaultdict(str))
             else:
-                return TestResult(body='SUCCESS')
+                return TestResult(body='SUCCESS'.encode())
         client._execute_request_raw = execute_request_with_retries
 
         # This should fail once, and then succeed
@@ -99,10 +99,13 @@ class BaseTest(unittest.TestCase):
         self.assertEqual(data.get('hello'), 'json')
 
         # Write our data into a gzipped stream
-        sio = StringIO()
+        sio = BytesIO()
         gzf = GzipFile(fileobj=sio, mode='wb')
-        gzf.write('{"hello": "gzipped"}')
+        gzf.write(bytes('{"hello": "gzipped"}', encoding='utf-8'))
         gzf.close()
 
         data = json.loads(self.client._process_body(sio.getvalue(), True))
         self.assertEqual(data.get('hello'), 'gzipped')
+
+if __name__ == "__main__":
+    unittest.main()
