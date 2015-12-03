@@ -19,16 +19,16 @@ class SettingsClientTest(unittest.TestCase):
 
     def setUp(self):
         self.client = SettingsClient(**helper.get_options())
-    
+
     def tearDown(self):
         pass
-    
+
     @attr('api')
     def test_get_settings(self):
         # Get all settings, a lengthy list typically.
         settings = self.client.get_settings()
         self.assertTrue(len(settings))
-        
+
         print "\n\nGot some settings: %s" % json.dumps(settings)
 
     @attr('api')
@@ -41,14 +41,14 @@ class SettingsClientTest(unittest.TestCase):
         print "\n\nGot a specific setting: %s, giving %s" % (name, json.dumps(settings));
 
     @attr('api')
-    def test_add_setting(self):        
+    def test_add_setting(self):
         # Add or update a specific setting.
         data = { 'name': 'test_name', 'value': 'test_value' }
         result = self.client.update_setting(data)
         # This is just a 201 response (or 500), no contents.
-        
+
         print "\n\nUpdated setting: %s." % data['name']
-    
+
     @attr('api')
     def test_delete_setting(self):
         # Deletes a specific setting, emptying out its value.

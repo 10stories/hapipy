@@ -48,7 +48,7 @@ class BaseTest(unittest.TestCase):
         url, headers, data = self.client._prepare_request(subpath, params, data, opts, doseq)
         print url
         self.assertTrue('duplicate=key&duplicate=' in url)
-        
+
     def test_call(self):
         client = TestBaseClient('key', api_base='base', env='hudson')
         client.sleep_multiplier = .02
@@ -61,7 +61,7 @@ class BaseTest(unittest.TestCase):
         def execute_request_with_retries(a, b):
             counter['count'] += 1
             if counter['count'] < 2:
-                raise HapiError(defaultdict(str), defaultdict(str)) 
+                raise HapiError(defaultdict(str), defaultdict(str))
             else:
                 return TestResult(body='SUCCESS')
         client._execute_request_raw = execute_request_with_retries
@@ -74,7 +74,7 @@ class BaseTest(unittest.TestCase):
 
 
         def execute_request_failed(a, b):
-            raise HapiError(defaultdict(str), defaultdict(str)) 
+            raise HapiError(defaultdict(str), defaultdict(str))
 
         # This should fail and retry and still fail
         client._execute_request_raw = execute_request_failed
