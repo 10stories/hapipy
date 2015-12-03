@@ -112,7 +112,7 @@ class BaseClient(object):
         except:
             raise HapiTimeout(None, request, traceback.format_exc())
 
-        encoding = [i[1] for i in result.getheaders() if i[0] == 'content-encoding']
+        encoding = [i[1] for i in result.getheaders() if i[0].lower() == 'content-encoding']
         result.body = self._process_body(result.read(), len(encoding) and encoding[0] == 'gzip')
 
         conn.close()
