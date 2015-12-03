@@ -55,7 +55,7 @@ class HapiError(ValueError):
         self.err = err
 
     def __str__(self):
-        return self.__unicode__().encode('ascii', 'replace')
+        return self.__unicode__()
 
 
     def __unicode__(self):
