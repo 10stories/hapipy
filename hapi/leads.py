@@ -1,6 +1,6 @@
 import time
-from base import BaseClient
-import logging_helper
+from .base import BaseClient
+from . import logging_helper
 #from pprint import pprint
  
 
@@ -94,9 +94,9 @@ class LeadsClient(BaseClient):
         original_options = options
         options = self.camelcase_search_options(options.copy())
         params = {}
-        for i in xrange(len(guids)):
+        for i in range(len(guids)):
             params['guids[%s]'%i] = guids[i]
-        for k in options.keys():
+        for k in list(options.keys()):
             if k in SEARCH_OPTIONS:
                 params[k] = options[k]
                 del options[k]

@@ -1,7 +1,7 @@
 import unittest
-import helper
+from . import helper
 from hapi.leads import LeadsClient
-import logger
+from . import logger
 import time
 
 class LeadsClientTest(unittest.TestCase):
@@ -22,7 +22,7 @@ class LeadsClientTest(unittest.TestCase):
                 'search': 'BlahBlah',
                 'timePivot': 'lastModifiedAt',
                 'isNotImported': 'true' }
-        self.assertEquals(out_options, self.client.camelcase_search_options(in_options))
+        self.assertEqual(out_options, self.client.camelcase_search_options(in_options))
 
 
 if __name__ == "__main__":

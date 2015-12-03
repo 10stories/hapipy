@@ -3,7 +3,7 @@ import time
 
 from nose.plugins.attrib import attr
 
-import helper
+from . import helper
 from hapi.broadcast import Broadcast, BroadcastClient
 
 
@@ -22,7 +22,7 @@ class BroadcastClientTest(unittest.TestCase):
     def tearDown(self):
         # Cancel any broadcasts created as part of the tests
         if self.broadcast_guids:
-            map(self.client.cancel_broadcast, self.broadcast_guids)
+            list(map(self.client.cancel_broadcast, self.broadcast_guids))
 
     @attr('api')
     def test_get_broadcasts(self):
@@ -32,7 +32,7 @@ class BroadcastClientTest(unittest.TestCase):
 
         broadcast = broadcasts[0].to_dict()
         self.assertIsNotNone(broadcast['channelGuid'])
-        print "\n\nFetched some broadcasts"
+        print("\n\nFetched some broadcasts")
 
         broadcast_guid = broadcast['broadcastGuid']
         # Re-fetch the broadcast using different call
