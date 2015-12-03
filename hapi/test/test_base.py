@@ -1,5 +1,5 @@
 from collections import defaultdict
-import unittest2
+import unittest
 import simplejson as json
 from StringIO import StringIO
 from gzip import GzipFile
@@ -22,7 +22,7 @@ class TestResult(object):
         return []
 
 
-class BaseTest(unittest2.TestCase):
+class BaseTest(unittest.TestCase):
 
     def setUp(self):
         self.client = TestBaseClient('unit_api_key')

@@ -1,6 +1,6 @@
 # coding: utf-8
 import random
-import unittest2
+import unittest
 import uuid
 
 import simplejson as json
@@ -9,7 +9,7 @@ from nose.plugins.attrib import attr
 import helper
 from hapi.keywords import KeywordsClient
 
-class KeywordsClientTest(unittest2.TestCase):
+class KeywordsClientTest(unittest.TestCase):
     """ Unit tests for the HubSpot Keyword API Python client.
 
     This file contains some unittest tests for the Keyword API.
@@ -182,4 +182,4 @@ class KeywordsClientTest(unittest2.TestCase):
             self.assertEqual(actual_unicode_keyword, original_unicode_keyword)
 
 if __name__ == "__main__":
-    unittest2.main()
+    unittest.main()

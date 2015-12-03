@@ -1,10 +1,10 @@
-import unittest2
+import unittest
 import helper
 from hapi.leads import LeadsClient
 import logger
 import time
 
-class LeadsClientTest(unittest2.TestCase):
+class LeadsClientTest(unittest.TestCase):
     def setUp(self):
         self.client = LeadsClient(**helper.get_options())
     
@@ -26,4 +26,4 @@ class LeadsClientTest(unittest2.TestCase):
  
 
 if __name__ == "__main__":
-    unittest2.main()
+    unittest.main()

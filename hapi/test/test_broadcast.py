@@ -1,4 +1,4 @@
-import unittest2
+import unittest
 import time
 
 from nose.plugins.attrib import attr
@@ -7,7 +7,7 @@ import helper
 from hapi.broadcast import Broadcast, BroadcastClient
 
 
-class BroadcastClientTest(unittest2.TestCase):
+class BroadcastClientTest(unittest.TestCase):
     """ Unit tests for the HubSpot Broadcast API Python client.
 
     This file contains some unittest tests for the Broadcast API.
@@ -75,4 +75,4 @@ class BroadcastClientTest(unittest2.TestCase):
 
 
 if __name__ == "__main__":
-    unittest2.main()
+    unittest.main()

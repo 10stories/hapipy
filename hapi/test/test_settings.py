@@ -1,5 +1,5 @@
 import random
-import unittest2
+import unittest
 
 import simplejson as json
 from nose.plugins.attrib import attr
@@ -7,7 +7,7 @@ from nose.plugins.attrib import attr
 import helper
 from hapi.settings import SettingsClient
 
-class SettingsClientTest(unittest2.TestCase):
+class SettingsClientTest(unittest.TestCase):
     """ Unit tests for the HubSpot Settings API Python client.
 
     This file contains some unittest tests for the Settings API.
@@ -59,4 +59,4 @@ class SettingsClientTest(unittest2.TestCase):
         print "\n\nDeleted setting: %s." % name
 
 if __name__ == "__main__":
-    unittest2.main()
+    unittest.main()
